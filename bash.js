@@ -11,9 +11,18 @@ process.stdin.on('data', function (data) {
 	var arg = cmd.substring(cmd.indexOf(" ") + 1)
 	// console.log("cmd: " + cmdParsed)
 	// console.log("arg: " + arg)
+	var done = function(output){
+		process.stdout.write(output);
+		process.stdout.write('\nprompt > ');
+	}
 
-  commands[cmdParsed](arg)
+  commands[cmdParsed](arg, done)
   // process.stdout.write('You typed: ' + cmd);
   process.stdout.write('\nprompt > ');
 
 });
+
+// function done(output){
+// 	process.stdout.write(output);
+// 	process.stdout.write('\nprompt > ');
+// }
