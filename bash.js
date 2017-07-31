@@ -26,3 +26,6 @@ process.stdin.on('data', function (data) {
 // 	process.stdout.write(output);
 // 	process.stdout.write('\nprompt > ');
 // }
+// abc
+// abc
+// abcd

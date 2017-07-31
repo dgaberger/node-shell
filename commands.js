@@ -46,6 +46,24 @@ module.exports = {
 			done(content.toString().split('\n').length.toString());
 		});
 	},
+	uniq: function(argument, done){
+		fs.readFile(argument, function(err, content) {
+		  if (err) throw err;
+			// process.stdout.write(content + "\n");
+			var contentTrim = content.toString().split('\n').map(function(line){
+				return line.trim();
+			})
+			var obj = {};
+			var arr = [];
+			contentTrim.forEach(function(line){
+				if (!obj[line]){
+					obj[line] = line;
+					arr.push(line);
+				}
+			})
+			done(arr.join('\n'));
+		});
+	},
 	head: function(argument, done, numOfLines){
 		var numOfLines = arguments[2] || 5;
 		fs.readFile(argument, function(err, content) {
